@@ -74,6 +74,12 @@ resource "aws_security_group" "ingress_k8s" {
     to_port     = 6443
     cidr_blocks = var.allowed_k8s_cidr_blocks
   }
+  ingress {
+    protocol    = "tcp"
+    from_port   = 30000
+    to_port     = 32768
+    cidr_blocks = var.allowed_k8s_cidr_blocks
+  }
 }
 
 resource "aws_security_group" "ingress_ssh" {

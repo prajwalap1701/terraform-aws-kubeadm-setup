@@ -46,7 +46,6 @@ resource "aws_instance" "k8s_master" {
       worker_index      = null
     }
   )
-
 }
 
 resource "aws_instance" "k8s_worker" {
@@ -83,5 +82,3 @@ resource "aws_instance" "k8s_worker" {
     }
   )
 }
-
-
