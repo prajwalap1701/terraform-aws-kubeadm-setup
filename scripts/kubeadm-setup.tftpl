@@ -58,7 +58,7 @@ kubeadm init \
   %{~ if cidr != null ~}
   --pod-network-cidr "${cidr}" \
   %{~ endif ~}
-  --node-name k8s-master
+  --node-name ${cluster_name}-controlplane
 
 # Prepare kubeconfig file for downloading
 
@@ -83,7 +83,7 @@ kubectl --kubeconfig /home/ubuntu/admin.conf apply -f https://github.com/weavewo
 kubeadm join "${master_private_ip}:6443" \
   --token "${token}" \
   --discovery-token-unsafe-skip-ca-verification \
-  --node-name k8s-worker-${worker_index+1}
+  --node-name ${cluster_name}-worker-${worker_index}
 %{~ endif }
 
 # Indicate completion
